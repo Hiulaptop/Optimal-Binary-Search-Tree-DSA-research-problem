@@ -9,6 +9,7 @@ int main(){
     freq.push_back(547);
     freq.push_back(100);
     freq.push_back(120);
-    h.Process(nums, freq);
+    // h.Process(nums, freq);
+    AlgoMenu(nums, freq);
     
 }

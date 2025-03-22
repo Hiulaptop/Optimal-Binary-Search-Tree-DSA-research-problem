@@ -32,7 +32,7 @@ void OptimalBST::Process(std::vector<int> nums, std::vector<int> freq){
                 s = c[i][l - 1] + c[l + 1][j];
                 if (s < mi){
                     mi = s;
-                    root[i][j] = l;
+                    root[i][j] = nums[l];
                 }
             }
 
@@ -43,7 +43,7 @@ void OptimalBST::Process(std::vector<int> nums, std::vector<int> freq){
 
     for (int i = 1; i <= n; i++){
         for (int j = 0; j <= n; j ++){
-            std::cout << c[i][j] << " ";
+            std::cout << std::setw(5) << std::setfill(' ') << c[i][j] << " ";
         }
         std::cout << '\n';
     }
