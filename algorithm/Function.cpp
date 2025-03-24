@@ -54,8 +54,8 @@ bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
     if (op == 0) return true;
     if (op >= data.size()) return false;
 
-    // Input(nums, freq);
-    GenTest(nums, freq);
+    Input(nums, freq);
+    // GenTest(nums, freq);
     if (op == 1){
         OptimalBST algo;
         algo.Process(nums, freq);
@@ -66,6 +66,8 @@ bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
         algo.Process(nums, freq);
         return true;
     }
+
+    return false;
 }
 
 int RandInt(int left, int right){

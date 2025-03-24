@@ -33,7 +33,7 @@ void KnuthOBST::Process(std::vector<int> nums, std::vector<int> freq){
                 s = c[i][l - 1] + c[l + 1][j];
                 if (s < mi){
                     mi = s;
-                    root[i][j] = nums[l];
+                    root[i][j] = l;
                 }
             }
 
@@ -41,18 +41,28 @@ void KnuthOBST::Process(std::vector<int> nums, std::vector<int> freq){
         }
     }
 
+    // for (int i = 1; i <= n; i++){
+    //     for (int j = 0; j <= n; j ++){
+    //         std::cout << std::setw(5) << std::setfill(' ') << c[i][j] << " ";
+    //     }
+    //     std::cout << '\n';
+    // }
 
-    for (int i = 1; i <= n; i++){
-        for (int j = 0; j <= n; j ++){
-            std::cout << std::setw(5) << std::setfill(' ') << c[i][j] << " ";
-        }
-        std::cout << '\n';
-    }
+    // for (int i = 1; i <= n; i++){
+    //     for (int j = 1; j <= n; j ++){
+    //         std::cout << root[i][j] << " ";
+    //     }
+    //     std::cout << '\n';
+    // }
 
-    for (int i = 1; i <= n; i++){
-        for (int j = 1; j <= n; j ++){
-            std::cout << root[i][j] << " ";
-        }
-        std::cout << '\n';
-    }
+    BuildTree(KBSTroot, 1, n, nums, root);
+    NLR(KBSTroot);
+}
+
+void KnuthOBST::BuildTree(Node * &root, int l, int r, std::vector<int> nums, std::vector<std::vector<int>> rootTable){
+    if (l > r) return;
+    int pivot = rootTable[l][r];
+    root = new Node(nums[pivot]);
+    BuildTree(root->left, l, pivot - 1, nums, rootTable);
+    BuildTree(root->right, pivot + 1, r, nums, rootTable);
 }
