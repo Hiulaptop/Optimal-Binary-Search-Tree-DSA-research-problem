@@ -26,8 +26,6 @@ void Input(std::vector<int> &nums, std::vector<int> &freq){
     }
     //Frequency
     std::cout << "Input frequency array: \n";
-    std::cout << "Size of array = ";
-    std::cin >> n;
     for (int i = 1; i <= n; i ++){
         std::cout << "Value " << i << "= ";
         std::cin >> u;
