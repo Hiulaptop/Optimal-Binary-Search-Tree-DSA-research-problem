@@ -39,6 +39,7 @@ bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
     std::vector<std::string> data = {
         "1. Optimal Binary Search Tree",
         "2. Knuth's Optimal Binary Search Tree",
+        "3. Bisection Heuristic",
         "0. Exit",
     };
 
@@ -63,6 +64,11 @@ bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
     }
     if (op == 2){
         KnuthOBST algo;
+        algo.Process(nums, freq);
+        return true;
+    }
+    if (op == 3){
+        BisectionHeu algo;
         algo.Process(nums, freq);
         return true;
     }
