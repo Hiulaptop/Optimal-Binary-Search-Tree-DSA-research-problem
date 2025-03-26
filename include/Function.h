@@ -1,7 +1,8 @@
 #pragma once
 #include <AllLibrary.h>
 
-void Input(std::vector<int> &nums, std::vector<int> &freq);
+bool ModeMenu();
 bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq);
-void GenTest(std::vector<int> &nums, std::vector<int> &freq);
+void Input(std::vector<int> &nums, std::vector<int> &freq);
+void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n);
 int RandInt(int left, int right);

@@ -10,6 +10,9 @@
 #include <ctime> 
 #include <random>
 
+//define
+#define int long long
+
 //struct
 struct Node{
     int value;
