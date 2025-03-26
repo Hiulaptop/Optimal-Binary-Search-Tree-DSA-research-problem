@@ -56,7 +56,7 @@ void KnuthOBST::Process(std::vector<int> nums, std::vector<int> freq){
     // }
 
     BuildTree(KBSTroot, 1, n, nums, root);
-    NLR(KBSTroot);
+    // NLR(KBSTroot);
 }
 
 void KnuthOBST::BuildTree(Node * &root, int l, int r, std::vector<int> nums, std::vector<std::vector<int>> rootTable){

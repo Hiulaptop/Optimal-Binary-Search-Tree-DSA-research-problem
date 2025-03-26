@@ -13,7 +13,7 @@
 
 //define
 #define int long long
-#define INT_MAX INT64_MAX
+// #define INT_MAX INT64_MAX
 
 //struct
 struct Node{
@@ -32,5 +32,3 @@ struct Node{
 #include <KnuthOBST.h>
 #include <BisectionHeu.h>
 #include <BST.h>
-
-Node * OBSTroot = nullptr;

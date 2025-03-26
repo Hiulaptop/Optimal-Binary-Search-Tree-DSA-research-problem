@@ -114,11 +114,11 @@ void Input(std::vector<int> &nums, std::vector<int> &freq){
     }
 }
 
-
-
-int RandInt(int left, int right){
-    int s = rand();
-    return (s % (right - left)) + left;
+int RandInt(int left, int right) {
+    static std::random_device rd;                      // Seed ngẫu nhiên
+    static std::mt19937 gen(rd());                     // Mersenne Twister PRNG
+    std::uniform_int_distribution<int> dist(left, right);
+    return dist(gen);
 }
 
 void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
@@ -136,7 +136,7 @@ void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
         cur = RandInt(prev, 100000000);
         prev = cur + 1;
         nums.push_back(cur);
-        freq.push_back(RandInt(1, 1000));
+        freq.push_back(RandInt(1, 100000));
     }
 }
 
@@ -163,19 +163,55 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
 
     std::vector<int> testcase;
     testcase.push_back(10);
-    // testcase.push_back(100);
+    testcase.push_back(100);
     // testcase.push_back(1000);
     // testcase.push_back(10000);
     // testcase.push_back(100000);
 
+    std::vector<std::vector<std::string>> data;
+    std::vector<std::string> row;
+    row.push_back("ID");
+    row.push_back("Size Input");
+    row.push_back("Optimal BST");
+    row.push_back("Knuth's BST");
+    row.push_back("Bisection heuristic BST");
+    data.push_back(row);
+
+    OptimalBST OBST;
+    KnuthOBST KBST;
+    BisectionHeu BBST;
+    int obst, kbst, bbst;
+    int id = 0;
     for (int testsize : testcase){
         for (int i = 0; i < 20; i ++){
+            id++;
             GenTest(nums, freq, testsize);
-            OptimalBST obst;
-            KnuthOBST kbst;
-            BisectionHeu bbst;
-            
+            OBST.Process(nums, freq);
+            KBST.Process(nums, freq);
+            BBST.Process(nums, freq);
+            row.clear();
+            row.push_back(std::to_string(id));
+            row.push_back(std::to_string(testsize));
+            obst = kbst = bbst = 0;
+            for (int j = 1; j <= testsize; j ++){
+                for (int k = 0; k < freq[j]; k ++){
+                    obst += SearchNode(OBST.OBSTroot, nums[j]);
+                    kbst += SearchNode(KBST.KBSTroot, nums[j]);
+                    bbst += SearchNode(BBST.BBSTroot, nums[j]);
+                }
+            }
+            row.push_back(std::to_string(obst));
+            row.push_back(std::to_string(kbst));
+            row.push_back(std::to_string(bbst));
+            data.push_back(row);
         }
+    }
+
+    for (auto roww : data){
+        for (int i = 0; i < roww.size() - 1; i ++){
+            fout << roww[i] << ",";
+        }
+        fout << roww.back() << '\n';
     }
 
     std::cout << "Complette output in output\\" << filename;

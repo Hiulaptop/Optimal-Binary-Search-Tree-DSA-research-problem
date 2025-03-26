@@ -55,7 +55,7 @@ void OptimalBST::Process(std::vector<int> nums, std::vector<int> freq){
     // }
 
     BuildTree(OBSTroot, 1, n, nums, root);
-    NLR(OBSTroot);
+    // NLR(OBSTroot);
 }
 
 void OptimalBST::BuildTree(Node * &root, int l, int r, std::vector<int> nums, std::vector<std::vector<int>> rootTable){

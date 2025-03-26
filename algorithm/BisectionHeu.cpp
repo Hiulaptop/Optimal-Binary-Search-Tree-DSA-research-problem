@@ -9,7 +9,7 @@ void BisectionHeu::Process(std::vector<int> nums, std::vector<int> freq){
     }
     BuildTree(BBSTroot, 1, n - 1, nums, prefix);
 
-    NLR(BBSTroot);
+    // NLR(BBSTroot);
 }
 
 void BisectionHeu::BuildTree(Node * &root, int l, int r, std::vector<int> nums, std::vector<int> prefix){
