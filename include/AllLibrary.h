@@ -2,16 +2,18 @@
 
 //include c and cpp lib
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <iomanip>
 #include <string>
-
 #include <cstdlib>
 #include <ctime> 
 #include <random>
+#include <string>
 
 //define
 #define int long long
+#define INT_MAX INT64_MAX
 
 //struct
 struct Node{
@@ -30,3 +32,5 @@ struct Node{
 #include <KnuthOBST.h>
 #include <BisectionHeu.h>
 #include <BST.h>
+
+Node * OBSTroot = nullptr;

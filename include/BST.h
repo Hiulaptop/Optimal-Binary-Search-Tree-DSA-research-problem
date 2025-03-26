@@ -3,4 +3,3 @@
 
 void BuildBST(Node *&root, int l, int r, std::vector<int> rootTable);
 void NLR(Node * root);
-int SearchNode(Node * root, int key);

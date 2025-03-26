@@ -14,20 +14,15 @@ void BisectionHeu::Process(std::vector<int> nums, std::vector<int> freq){
 
 void BisectionHeu::BuildTree(Node * &root, int l, int r, std::vector<int> nums, std::vector<int> prefix){
     if (l > r) return;
-    int id = l, mi = INT_MAX, result = l;
-    int s1 = prefix[id - 1] - prefix[l - 1];
-    int s2 = prefix[r] - prefix[id];
-
-    while (s1 < s2 && id <= r){
-        s1 = prefix[id - 1] - prefix[l - 1];
-        s2 = prefix[r] - prefix[id];
-        if (abs(s2 - s1) < mi){
-            mi = abs(s2 - s1);
-            result = id;
-        }
-        id++;
+    int id = l;
+    int half = (prefix[r] - prefix[l - 1])/2;
+    int le = l, ri = r;
+    while (le <= ri){
+        id = (le + ri) / 2;
+        if ((prefix[id] - prefix[l-1]) < half) le = id + 1;
+        else ri = id - 1;
     }
-    id = result;
+    id = le;
     root = new Node(nums[id]);
     BuildTree(root->left, l, id - 1, nums, prefix);
     BuildTree(root->right, id + 1, r, nums, prefix);

@@ -22,7 +22,7 @@ bool ModeMenu(){
 
     std::vector<int> nums, freq;
     if (op == 1){
-        
+        TestMode(nums, freq);
         return true;
     }
     if (op == 2){
@@ -138,4 +138,45 @@ void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
         nums.push_back(cur);
         freq.push_back(RandInt(1, 1000));
     }
+}
+
+int SearchNode(Node * root, int key){
+    if (!root) return 0;
+    if (key == root->value) return 1;
+    
+    if (key > root->value) return SearchNode(root->left, key) + 1;
+    else return SearchNode(root->right, key) + 1;
+}
+
+void TestMode(std::vector<int> &nums, std::vector<int> &freq){
+    time_t timestamp;
+    time(&timestamp);
+    std::string filename = ctime(&timestamp);
+    filename.pop_back();
+    filename += ".csv";
+    for (int i = 0; i < filename.size(); i ++){
+        if (filename[i] == ' ' || filename[i] == ':') filename[i] = '_';
+    }
+    std::ofstream fout;
+    fout.open("..\\output\\" + filename);
+    std::cout << "In processing....\n";
+
+    std::vector<int> testcase;
+    testcase.push_back(10);
+    // testcase.push_back(100);
+    // testcase.push_back(1000);
+    // testcase.push_back(10000);
+    // testcase.push_back(100000);
+
+    for (int testsize : testcase){
+        for (int i = 0; i < 20; i ++){
+            GenTest(nums, freq, testsize);
+            OptimalBST obst;
+            KnuthOBST kbst;
+            BisectionHeu bbst;
+            
+        }
+    }
+
+    std::cout << "Complette output in output\\" << filename;
 }
