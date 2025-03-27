@@ -12,16 +12,18 @@
 #include <string>
 
 //define
-#define int long long
+// #define int long long
 // #define INT_MAX INT64_MAX
 
 //struct
 struct Node{
     int value;
+    int freq;
     Node * left = nullptr;
     Node * right = nullptr;
 
-    Node(int value) : value(value) {}
+    Node(int value, int freq) : value(value), freq(freq) {}
+    // Node(int value) : value(value) {}
 };
 
 // Node * OBSTroot = nullptr;

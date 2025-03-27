@@ -128,16 +128,15 @@ void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
     nums.push_back(0);
     freq.push_back(0);
 
-
-    srand(time(NULL));
     if (!n) n = RandInt(5, 1000);
     int cur = 1, prev = 0;
     for (int i = 1; i <= n; i ++){
-        cur = RandInt(prev, 100000000);
-        prev = cur + 1;
+        cur = RandInt(1, 10000);
         nums.push_back(cur);
-        freq.push_back(RandInt(1, 100000));
+        freq.push_back(RandInt(1, 10000));
     }
+    
+    std::sort(nums.begin(), nums.end());
 }
 
 int SearchNode(Node * root, int key){
@@ -146,6 +145,11 @@ int SearchNode(Node * root, int key){
     
     if (key > root->value) return SearchNode(root->left, key) + 1;
     else return SearchNode(root->right, key) + 1;
+}
+
+int TotalCost(Node * root, int level){
+    if (!root) return 0;
+    return root->freq * level + TotalCost(root->left, level + 1) + TotalCost(root->right, level + 1);
 }
 
 void TestMode(std::vector<int> &nums, std::vector<int> &freq){
@@ -164,7 +168,7 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
     std::vector<int> testcase;
     testcase.push_back(10);
     testcase.push_back(100);
-    // testcase.push_back(1000);
+    testcase.push_back(1000);
     // testcase.push_back(10000);
     // testcase.push_back(100000);
 
@@ -182,8 +186,14 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
     BisectionHeu BBST;
     int obst, kbst, bbst;
     int id = 0;
-    for (int testsize : testcase){
-        for (int i = 0; i < 20; i ++){
+    int dem = 0;
+    // int len = testcase.size();
+    int len = 1000;
+    for (int k = 1; k <= len; k ++){
+        // int testsize = testcase[k];
+        std::cout << 100.0 * ((double)(k) / len) << "%\n";
+        int testsize = k;
+        for (int i = 0; i < 1; i ++){
             id++;
             GenTest(nums, freq, testsize);
             OBST.Process(nums, freq);
@@ -193,19 +203,40 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
             row.push_back(std::to_string(id));
             row.push_back(std::to_string(testsize));
             obst = kbst = bbst = 0;
-            for (int j = 1; j <= testsize; j ++){
-                for (int k = 0; k < freq[j]; k ++){
-                    obst += SearchNode(OBST.OBSTroot, nums[j]);
-                    kbst += SearchNode(KBST.KBSTroot, nums[j]);
-                    bbst += SearchNode(BBST.BBSTroot, nums[j]);
+            obst = TotalCost(OBST.OBSTroot, 1);
+            kbst = TotalCost(KBST.KBSTroot, 1);
+            bbst = TotalCost(BBST.BBSTroot, 1);
+            if (bbst < kbst){
+                dem ++;
+                std::cout << "WRONG BISECTION IN THIS TEST: \n";
+                for (int i : nums){
+                    std::cout << i << ' ';
                 }
+                std::cout << '\n';
+                for (int i : freq){
+                    std::cout << i << ' ';
+                }
+                std::cout << '\n';
             }
+            // if (obst != kbst){
+            //     std::cout << "WRONG OBST IN THIS TEST: \n";
+            //     for (int i : nums){
+            //         std::cout << i << ' ';
+            //     }
+            //     std::cout << '\n';
+            //     for (int i : freq){
+            //         std::cout << i << ' ';
+            //     }
+            //     std::cout << '\n';
+            // }
             row.push_back(std::to_string(obst));
             row.push_back(std::to_string(kbst));
             row.push_back(std::to_string(bbst));
             data.push_back(row);
         }
     }
+
+    std::cout << "WRONG IN: " << dem << "TEST!!!\n";
 
     for (auto roww : data){
         for (int i = 0; i < roww.size() - 1; i ++){

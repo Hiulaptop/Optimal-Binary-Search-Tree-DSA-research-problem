@@ -54,14 +54,14 @@ void OptimalBST::Process(std::vector<int> nums, std::vector<int> freq){
     //     std::cout << '\n';
     // }
 
-    BuildTree(OBSTroot, 1, n, nums, root);
+    BuildTree(OBSTroot, 1, n, nums, freq, root);
     // NLR(OBSTroot);
 }
 
-void OptimalBST::BuildTree(Node * &root, int l, int r, std::vector<int> nums, std::vector<std::vector<int>> rootTable){
+void OptimalBST::BuildTree(Node * &root, int l, int r, std::vector<int> nums, std::vector<int> freq, std::vector<std::vector<int>> rootTable){
     if (l > r) return;
     int pivot = rootTable[l][r];
-    root = new Node(nums[pivot]);
-    BuildTree(root->left, l, pivot - 1, nums, rootTable);
-    BuildTree(root->right, pivot + 1, r, nums, rootTable);
+    root = new Node(nums[pivot], freq[pivot]);
+    BuildTree(root->left, l, pivot - 1, nums, freq, rootTable);
+    BuildTree(root->right, pivot + 1, r, nums, freq, rootTable);
 }
