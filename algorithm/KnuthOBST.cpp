@@ -1,6 +1,6 @@
 #include <KnuthOBST.h>
 
-void KnuthOBST::Process(std::vector<int> nums, std::vector<int> freq){
+void KnuthOBST::Process(std::vector<int> &nums, std::vector<int> &freq){
     int n = freq.size() - 1;
     std::vector<std::vector<int>> c, root;
     std::vector<int>prefix;
@@ -13,7 +13,6 @@ void KnuthOBST::Process(std::vector<int> nums, std::vector<int> freq){
     }
     
     for (int i = 1; i <= n; i ++){
-        c[i][i - 1] = 0;
         c[i][i] = freq[i];
         root[i][i] = i;
     }
@@ -22,7 +21,6 @@ void KnuthOBST::Process(std::vector<int> nums, std::vector<int> freq){
     for (int i = 1; i <= n; i ++){
         prefix[i] = prefix[i - 1] + freq[i];
     }
-
 
     for (int d = 1; d < n; d ++){
         for (int i = 1; i <= n - d; i ++){
@@ -59,7 +57,7 @@ void KnuthOBST::Process(std::vector<int> nums, std::vector<int> freq){
     // NLR(KBSTroot);
 }
 
-void KnuthOBST::BuildTree(Node * &root, int l, int r, std::vector<int> nums, std::vector<int> freq, std::vector<std::vector<int>> rootTable){
+void KnuthOBST::BuildTree(Node * &root, int l, int r, std::vector<int> &nums, std::vector<int> &freq, std::vector<std::vector<int>> &rootTable){
     if (l > r) return;
     int pivot = rootTable[l][r];
     root = new Node(nums[pivot], freq[pivot]);

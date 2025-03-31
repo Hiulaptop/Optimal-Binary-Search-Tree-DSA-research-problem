@@ -33,4 +33,4 @@ struct Node{
 #include <OptimalBST.h>
 #include <KnuthOBST.h>
 #include <BisectionHeu.h>
-#include <BST.h>
+#include <PerfectBST.h>
