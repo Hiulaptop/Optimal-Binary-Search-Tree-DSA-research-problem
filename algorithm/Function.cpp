@@ -33,47 +33,11 @@ void Input(std::vector<int> &nums, std::vector<int> &freq){
     }
 }
 
-<<<<<<< Updated upstream
-bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
-    std::vector<std::string> data = {
-        "1. Optimal Binary Search Tree",
-        "2. Knuth's Optimal Binary Search Tree",
-        "0. Exit",
-    };
-
-    std::cout << std::setfill('-') << std::setw(40) << '\n';
-    for (std::string i : data){
-        std::cout << std::left << '|' << std::setw(38) << i << "|\n";
-    }
-    std::cout << std::setfill('-') << std::setw(40) << "";
-    std::cout << "\n";
-
-    int op = 0;
-    std::cin >> op;
-    if (op == 0) return true;
-    if (op >= data.size()) return false;
-
-    Input(nums, freq);
-    // GenTest(nums, freq);
-    if (op == 1){
-        OptimalBST algo;
-        algo.Process(nums, freq);
-        return true;
-    }
-    if (op == 2){
-        KnuthOBST algo;
-        algo.Process(nums, freq);
-        return true;
-    }
-
-    return false;
-=======
 int RandInt(int left, int right) {
     static std::random_device rd;                      // Random seed
     static std::mt19937 gen(rd());                     // Mersenne Twister PRNG
     std::uniform_int_distribution<int> dist(left, right);
     return dist(gen);
->>>>>>> Stashed changes
 }
 
 int RandInt(int left, int right){
@@ -81,34 +45,13 @@ int RandInt(int left, int right){
     return (s % (right - left)) + left;
 }
 
-void GenTest(std::vector<int> &nums, std::vector<int> &freq){
+void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
     //Init array
     nums.clear();
     freq.clear();
     nums.push_back(0);
     freq.push_back(0);
 
-<<<<<<< Updated upstream
-
-    srand(time(NULL));
-    int n = RandInt(5, 10), cur = 1, prev = 0;
-    for (int i = 1; i <= n; i ++){
-        cur = RandInt(prev, 100000);
-        prev = cur + 1;
-        nums.push_back(cur);
-        freq.push_back(RandInt(1, 1000));
-    }
-
-    // std::cout << n << '\n';
-    // for (int i = 1; i <= n; i ++){
-    //     std::cout << nums[i] << ' ';
-    // }
-    // std::cout << '\n';
-    // for (int i = 1; i <= n; i ++){
-    //     std::cout << freq[i] << ' ';
-    // }
-    // std::cout << '\n';
-=======
     if (!n) n = RandInt(5, 1000);
     int cur = 1, prev = 0;
     int temp = RandInt(1, 10000);
@@ -209,5 +152,4 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
     fout << diffHeu << ' ' << diffPerfect << '\n';
 
     std::cout << "Complete output in output\\" << filename;
->>>>>>> Stashed changes
 }
