@@ -129,8 +129,11 @@ void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
     freq.push_back(0);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     srand(time(NULL));
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     if (!n) n = RandInt(5, 1000);
@@ -221,5 +224,4 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
     std::cout << "Complette output in output\\" << filename;
 =======
     std::cout << "Complete output in output\\" << filename;
->>>>>>> Stashed changes
 }
