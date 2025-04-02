@@ -130,8 +130,11 @@ void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     srand(time(NULL));
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
