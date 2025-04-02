@@ -54,7 +54,11 @@ void OptimalBST::Process(std::vector<int> nums, std::vector<int> freq){
     //     std::cout << '\n';
     // }
 
+<<<<<<< Updated upstream
     BuildTree(OBSTroot, 1, n, nums, root);
+=======
+    BuildTree(OBSTroot, 1, n, nums, freq, root);
+>>>>>>> Stashed changes
     // NLR(OBSTroot);
 }
 

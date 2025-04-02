@@ -128,8 +128,11 @@ void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
     nums.push_back(0);
     freq.push_back(0);
 
+<<<<<<< Updated upstream
 
     srand(time(NULL));
+=======
+>>>>>>> Stashed changes
     if (!n) n = RandInt(5, 1000);
     int cur = 1, prev = 0;
     for (int i = 1; i <= n; i ++){
@@ -214,5 +217,9 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
         fout << roww.back() << '\n';
     }
 
+<<<<<<< Updated upstream
     std::cout << "Complette output in output\\" << filename;
+=======
+    std::cout << "Complete output in output\\" << filename;
+>>>>>>> Stashed changes
 }
