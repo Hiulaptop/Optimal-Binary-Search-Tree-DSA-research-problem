@@ -1,6 +1,79 @@
 #include <Function.h>
 
 
+void Example(){
+    std::vector<int> nums, freq;
+    nums.push_back(0);
+    freq.push_back(0);
+    nums.push_back(1);
+    freq.push_back(210);
+    nums.push_back(2);
+    freq.push_back(20);
+    nums.push_back(3);
+    freq.push_back(547);
+    nums.push_back(4);
+    freq.push_back(100);
+    nums.push_back(5);
+    freq.push_back(120);
+    std::cout << "Nums: ";
+    for (int i = 1; i < nums.size(); i ++){
+        std::cout << nums[i] << " ";
+    }
+    std::cout << "\nFreq: ";
+    for (int i = 1; i < freq.size(); i ++){
+        std::cout << freq[i] << " ";
+    }
+    std::cout << "\n";
+    std::cout << "Optimal BST: \n";
+    OptimalBST OBST;
+    OBST.Process(nums, freq);
+    PerfectBST PBST;
+    PBST.NLR(OBST.OBSTroot);
+    std::cout << "\n";
+}
+
+bool ModeMenu(){
+    std::vector<std::string> data = {
+        "1. Test mode",
+        "2. Manual input mode",
+        "3. Random input mode",
+        "0. Exit",
+    };
+
+    std::cout << std::setfill('-') << std::setw(40) << '\n';
+    for (std::string i : data){
+        std::cout << std::left << '|' << std::setw(38) << i << "|\n";
+    }
+    std::cout << std::setfill('-') << std::setw(40) << "";
+    std::cout << "\n";
+
+    int op = 0;
+    std::cin >> op;
+    if (op == 0) return true;
+    if (op >= data.size()) return false;
+
+    std::vector<int> nums, freq;
+    if (op == 1){
+        TestMode(nums, freq);
+        return true;
+    }
+    if (op == 2){
+        Input(nums, freq);
+        AlgoMenu(nums, freq);
+        return true;
+    }
+    if (op == 3){
+        int n;
+        std::cout << "Size of array (input 0 for random size) = ";
+        std::cin >> n;
+        GenTest(nums, freq, n);
+        AlgoMenu(nums, freq);
+        return true;
+    }
+
+    return false;
+}
+
 void Input(std::vector<int> &nums, std::vector<int> &freq){
     std::vector<std::string> data = {
         "1. Value array",
@@ -33,6 +106,41 @@ void Input(std::vector<int> &nums, std::vector<int> &freq){
     }
 }
 
+bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
+    std::vector<std::string> data = {
+        "1. Optimal Binary Search Tree",
+        "2. Knuth's Optimal Binary Search Tree",
+        "0. Exit",
+    };
+
+    std::cout << std::setfill('-') << std::setw(40) << '\n';
+    for (std::string i : data){
+        std::cout << std::left << '|' << std::setw(38) << i << "|\n";
+    }
+    std::cout << std::setfill('-') << std::setw(40) << "";
+    std::cout << "\n";
+
+    int op = 0;
+    std::cin >> op;
+    if (op == 0) return true;
+    if (op >= data.size()) return false;
+
+    Input(nums, freq);
+    // GenTest(nums, freq);
+    if (op == 1){
+        OptimalBST algo;
+        algo.Process(nums, freq);
+        return true;
+    }
+    if (op == 2){
+        KnuthOBST algo;
+        algo.Process(nums, freq);
+        return true;
+    }
+
+    return false;
+}
+
 int RandInt(int left, int right) {
     static std::random_device rd;                      // Random seed
     static std::mt19937 gen(rd());                     // Mersenne Twister PRNG
@@ -40,12 +148,7 @@ int RandInt(int left, int right) {
     return dist(gen);
 }
 
-int RandInt(int left, int right){
-    int s = rand();
-    return (s % (right - left)) + left;
-}
-
-void GenTest(std::vector<int> &nums, std::vector<int> &freq){
+void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
     //Init array
     nums.clear();
     freq.clear();
@@ -54,7 +157,6 @@ void GenTest(std::vector<int> &nums, std::vector<int> &freq){
 
     if (!n) n = RandInt(5, 1000);
     int cur = 1, prev = 0;
-    int temp = RandInt(1, 10000);
     for (int i = 1; i <= n; i ++){
         cur = RandInt(1, 10000);
         nums.push_back(cur);
@@ -133,7 +235,6 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
             pbst = TotalCost(PBST.PBSTroot, 1);
 
             diffHeu += 1.0*hbst/kbst;
-            std::cerr << diffHeu << ' ';
             diffPerfect += 1.0*pbst/kbst;
             row.push_back(std::to_string(kbst));
             row.push_back(std::to_string(hbst));
