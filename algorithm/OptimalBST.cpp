@@ -1,6 +1,6 @@
 #include <OptimalBST.h>
 
-void OptimalBST::Process(std::vector<int> nums, std::vector<int> freq){
+void OptimalBST::Process(std::vector<int> &nums, std::vector<int> &freq){
     int n = freq.size() - 1;
     std::vector<std::vector<int>> c, root;
     std::vector<int>prefix;
@@ -13,7 +13,6 @@ void OptimalBST::Process(std::vector<int> nums, std::vector<int> freq){
     }
     
     for (int i = 1; i <= n; i ++){
-        c[i][i - 1] = 0;
         c[i][i] = freq[i];
         root[i][i] = i;
     }
@@ -55,25 +54,18 @@ void OptimalBST::Process(std::vector<int> nums, std::vector<int> freq){
     // }
 
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     BuildTree(OBSTroot, 1, n, nums, root);
+    NLR(OBSTroot);
 =======
     BuildTree(OBSTroot, 1, n, nums, freq, root);
->>>>>>> Stashed changes
-=======
-    BuildTree(OBSTroot, 1, n, nums, freq, root);
->>>>>>> Stashed changes
-=======
-    BuildTree(OBSTroot, 1, n, nums, freq, root);
->>>>>>> Stashed changes
     // NLR(OBSTroot);
+>>>>>>> Stashed changes
 }
 
-void OptimalBST::BuildTree(Node * &root, int l, int r, std::vector<int> nums, std::vector<std::vector<int>> rootTable){
+void OptimalBST::BuildTree(Node * &root, int l, int r, std::vector<int> &nums, std::vector<int> &freq, std::vector<std::vector<int>> &rootTable){
     if (l > r) return;
     int pivot = rootTable[l][r];
-    root = new Node(nums[pivot]);
-    BuildTree(root->left, l, pivot - 1, nums, rootTable);
-    BuildTree(root->right, pivot + 1, r, nums, rootTable);
+    root = new Node(nums[pivot], freq[pivot]);
+    BuildTree(root->left, l, pivot - 1, nums, freq, rootTable);
+    BuildTree(root->right, pivot + 1, r, nums, freq, rootTable);
 }
