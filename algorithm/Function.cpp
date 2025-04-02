@@ -45,7 +45,7 @@ int RandInt(int left, int right){
     return (s % (right - left)) + left;
 }
 
-void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n){
+void GenTest(std::vector<int> &nums, std::vector<int> &freq){
     //Init array
     nums.clear();
     freq.clear();
