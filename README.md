@@ -15,11 +15,9 @@ Sau đó, bạn hãy tải source code của dự án về. Sau đó mở Comman
 .\build.bat
 ```
 
-Nhớ viết tiếp nha bro.
-
 ## Đầu ra mẫu (Ví dụ)
 
-Nhớ viết tiếp nha bro.
+Các test mẫu được đặt trong thư mục output.
 
 ## Tác giả
 Dự án được thực hiện bởi:
