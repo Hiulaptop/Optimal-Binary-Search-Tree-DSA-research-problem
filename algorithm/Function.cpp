@@ -106,18 +106,28 @@ void Input(std::vector<int> &nums, std::vector<int> &freq){
     }
 }
 
+void NLR(Node * root){
+    if (!root) return;
+    std::cout << root->value << ' ';
+    NLR(root->left);
+    NLR(root->right);
+}
+
 bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
     std::vector<std::string> data = {
         "1. Optimal Binary Search Tree",
         "2. Knuth's Optimal Binary Search Tree",
+        "3. Bisection Heuristic Optimal Binary Search Tree",
+        "4. Perfect Binary Search Tree",
         "0. Exit",
     };
 
-    std::cout << std::setfill('-') << std::setw(40) << '\n';
+    std::cout << std::setfill('-') << std::setw(55) << '\n';
+    std::cout << '\n';
     for (std::string i : data){
-        std::cout << std::left << '|' << std::setw(38) << i << "|\n";
+        std::cout << std::left << '|' << std::setw(53) << i << "|\n";
     }
-    std::cout << std::setfill('-') << std::setw(40) << "";
+    std::cout << std::setfill('-') << std::setw(55) << "";
     std::cout << "\n";
 
     int op = 0;
@@ -125,16 +135,34 @@ bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
     if (op == 0) return true;
     if (op >= data.size()) return false;
 
-    Input(nums, freq);
+    // Input(nums, freq);
     // GenTest(nums, freq);
     if (op == 1){
         OptimalBST algo;
         algo.Process(nums, freq);
+        NLR(algo.OBSTroot);
+        std::cout << "\n";
         return true;
     }
     if (op == 2){
         KnuthOBST algo;
         algo.Process(nums, freq);
+        NLR(algo.KBSTroot);
+        std::cout << "\n";
+        return true;
+    }
+    if (op == 3){
+        BisectionHeu algo;
+        algo.Process(nums, freq);
+        NLR(algo.HBSTroot);
+        std::cout << "\n";
+        return true;
+    }
+    if (op == 3){
+        PerfectBST algo;
+        algo.Process(nums, freq);
+        NLR(algo.PBSTroot);
+        std::cout << "\n";
         return true;
     }
 

@@ -5,6 +5,7 @@
 void Example();
 bool ModeMenu();
 void Input(std::vector<int> &nums, std::vector<int> &freq);
+void NLR(Node * root);
 bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq);
 void GenTest(std::vector<int> &nums, std::vector<int> &freq, int n);
 int RandInt(int left, int right);
