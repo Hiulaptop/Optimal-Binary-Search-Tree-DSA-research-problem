@@ -39,6 +39,7 @@ void OptimalBST::Process(std::vector<int> &nums, std::vector<int> &freq){
         }
     }
 
+    // *UNCOMMENT THIS TO SEE COST/ROOT TABLE*
     // for (int i = 1; i <= n; i++){
     //     for (int j = 0; j <= n; j ++){
     //         std::cout << std::setw(5) << std::setfill(' ') << c[i][j] << " ";
@@ -54,7 +55,6 @@ void OptimalBST::Process(std::vector<int> &nums, std::vector<int> &freq){
     // }
 
     BuildTree(OBSTroot, 1, n, nums, freq, root);
-    // NLR(OBSTroot);
 }
 
 void OptimalBST::BuildTree(Node * &root, int l, int r, std::vector<int> &nums, std::vector<int> &freq, std::vector<std::vector<int>> &rootTable){

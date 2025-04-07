@@ -19,10 +19,7 @@ struct Node{
     Node * right = nullptr;
 
     Node(int value, int freq) : value(value), freq(freq) {}
-    // Node(int value) : value(value) {}
 };
-
-// Node * OBSTroot = nullptr;
 
 //include project header file
 #include <Function.h>

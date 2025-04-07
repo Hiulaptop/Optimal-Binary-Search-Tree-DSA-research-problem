@@ -14,12 +14,15 @@ void Example(){
     for (int i = 1; i < freq.size(); i ++){
         std::cout << freq[i] << " ";
     }
+
     std::cout << "\n";
-    std::cout << "Optimal BST: \n";
+    std::cout << "Optimal Binary Search Tree example: \n";
     OptimalBST OBST;
     OBST.Process(nums, freq);
-    PerfectBST PBST;
-    PBST.NLR(OBST.OBSTroot);
+    std::cout << "Preorder traversal: ";
+    NLR(OBST.OBSTroot);
+    std::cout << "\n";
+    std::cout << "Total cost: " << TotalCost(OBST.OBSTroot, 1) << "\n";
     std::cout << "\n";
 }
 
@@ -83,13 +86,13 @@ void Input(std::vector<int> &nums, std::vector<int> &freq){
     };
 
     int n, u;
-    //Init array
+    // Init array
     nums.clear();
     freq.clear();
     nums.push_back(0);
     freq.push_back(0);
 
-    //Value
+    // Input Value
     std::cout << "Input value array: \n";
     std::cout << "Size of array = ";
     std::cin >> n;
@@ -99,7 +102,7 @@ void Input(std::vector<int> &nums, std::vector<int> &freq){
         std::cin >> u;
         nums.push_back(u);
     }
-    //Frequency
+    // Input Frequency
     std::cout << "Input frequency array: \n";
     for (int i = 1; i <= n; i ++){
         std::cout << "Value " << i << "= ";
@@ -137,8 +140,6 @@ bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
     if (op == 0) return true;
     if (op >= data.size()) return false;
 
-    // Input(nums, freq);
-    // GenTest(nums, freq);
     if (op == 1){
         OptimalBST algo;
         algo.Process(nums, freq);
@@ -244,7 +245,7 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
     row.push_back("Perfectly Balanced BST");
     data.push_back(row);
 
-    //OptimalBST OBST;
+    // Initialize 
     KnuthOBST KBST;
     BisectionHeu HBST;
     PerfectBST PBST;
@@ -252,10 +253,9 @@ void TestMode(std::vector<int> &nums, std::vector<int> &freq){
     long double diffHeu = 0, diffPerfect = 0;
     int id = 0;
     int dem = 0;
-    // int len = testcase.size();
     int len = 1000;
     for (int k = 1; k <= len; k ++){
-        // int testsize = testcase[k];
+        // *UNCOMMENT THIS TO SHOW PERCENTS OF PROCESS*
         //std::cout << 100.0 * ((double)(k) / len) << "%\n";
         int testsize = k;
         for (int i = 0; i < 1; i ++){

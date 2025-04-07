@@ -11,10 +11,3 @@ void PerfectBST::BuildBST(Node *&root, int l, int r, std::vector<int> &nums, std
     BuildBST(root->left, l, mid - 1, nums, freq);
     BuildBST(root->right, mid + 1, r, nums, freq);
 }
-
-void PerfectBST::NLR(Node * root){
-    if (!root) return;
-    std::cout << root->value << ' ';
-    NLR(root->left);
-    NLR(root->right);
-}

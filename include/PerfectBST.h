@@ -7,5 +7,4 @@ class PerfectBST
     Node *PBSTroot = nullptr;
     void Process(std::vector<int> &nums, std::vector<int> &freq);
     void BuildBST(Node *&root, int l, int r, std::vector<int> &nums, std::vector<int> &freq);
-    void NLR(Node * root);
 };
