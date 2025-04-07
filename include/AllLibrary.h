@@ -11,10 +11,6 @@
 #include <random>
 #include <string>
 
-//define
-// #define int long long
-// #define INT_MAX INT64_MAX
-
 //struct
 struct Node{
     int value;

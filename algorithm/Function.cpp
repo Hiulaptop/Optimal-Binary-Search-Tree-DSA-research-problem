@@ -3,18 +3,9 @@
 
 void Example(){
     std::vector<int> nums, freq;
-    nums.push_back(0);
-    freq.push_back(0);
-    nums.push_back(1);
-    freq.push_back(210);
-    nums.push_back(2);
-    freq.push_back(20);
-    nums.push_back(3);
-    freq.push_back(547);
-    nums.push_back(4);
-    freq.push_back(100);
-    nums.push_back(5);
-    freq.push_back(120);
+    // 1-indexed array so put a zero at first
+    nums = {0, 2, 3, 5, 7, 9};
+    freq = {0, 210, 20, 547, 100, 120};
     std::cout << "Nums: ";
     for (int i = 1; i < nums.size(); i ++){
         std::cout << nums[i] << " ";
@@ -67,6 +58,16 @@ bool ModeMenu(){
         std::cout << "Size of array (input 0 for random size) = ";
         std::cin >> n;
         GenTest(nums, freq, n);
+        std::cout << "Nums: ";
+        for (int i = 1; i < nums.size(); i ++){
+            std::cout << nums[i] << " ";
+        }
+        std::cout << "\nFreq: ";
+        for (int i = 1; i < freq.size(); i ++){
+            std::cout << freq[i] << " ";
+        }
+        std::cout << "\n";
+
         AlgoMenu(nums, freq);
         return true;
     }
@@ -92,6 +93,7 @@ void Input(std::vector<int> &nums, std::vector<int> &freq){
     std::cout << "Input value array: \n";
     std::cout << "Size of array = ";
     std::cin >> n;
+    std::cout << "Please input an ascending array\n";
     for (int i = 1; i <= n; i ++){
         std::cout << "Value " << i << "= ";
         std::cin >> u;
@@ -140,29 +142,37 @@ bool AlgoMenu(std::vector<int> &nums, std::vector<int> &freq){
     if (op == 1){
         OptimalBST algo;
         algo.Process(nums, freq);
+        std::cout << "Preorder traversal: ";
         NLR(algo.OBSTroot);
         std::cout << "\n";
+        std::cout << "Total cost: " << TotalCost(algo.OBSTroot, 1) << "\n";
         return true;
     }
     if (op == 2){
         KnuthOBST algo;
         algo.Process(nums, freq);
+        std::cout << "Preorder traversal: ";
         NLR(algo.KBSTroot);
         std::cout << "\n";
+        std::cout << "Total cost: " << TotalCost(algo.KBSTroot, 1) << "\n";
         return true;
     }
     if (op == 3){
         BisectionHeu algo;
         algo.Process(nums, freq);
+        std::cout << "Preorder traversal: ";
         NLR(algo.HBSTroot);
         std::cout << "\n";
+        std::cout << "Total cost: " << TotalCost(algo.HBSTroot, 1) << "\n";
         return true;
     }
-    if (op == 3){
+    if (op == 4){
         PerfectBST algo;
         algo.Process(nums, freq);
+        std::cout << "Preorder traversal: ";
         NLR(algo.PBSTroot);
         std::cout << "\n";
+        std::cout << "Total cost: " << TotalCost(algo.PBSTroot, 1) << "\n";
         return true;
     }
 
