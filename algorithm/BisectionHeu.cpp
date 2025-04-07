@@ -8,7 +8,6 @@ void BisectionHeu::Process(std::vector<int> &nums, std::vector<int> &freq){
         prefix[i] = prefix[i - 1] + freq[i];
     }
     BuildTree(HBSTroot, 1, n - 1, nums, freq, prefix);
-
 }
 
 void BisectionHeu::BuildTree(Node * &root, int l, int r, std::vector<int> &nums, std::vector<int> &freq, std::vector<int> &prefix){
