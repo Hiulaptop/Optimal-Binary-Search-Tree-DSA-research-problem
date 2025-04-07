@@ -1,26 +1,36 @@
 # Optimal-Binary-Search-Tree-DSA-research-problem
 
-## Giới thiệu
-Đây là một bài tập của môn **Cấu trúc dữ liệu và giải thuật** được thực hiện bởi nhóm sinh viên khoa **Công nghệ thông tin -  Đại học Khoa học tự nhiên**. Dự án bao gồm các thuật toán xoay quanh **Optimal Binary Search Tree** như:
+## Introduction
+This is an assignment for the course **Data Structures and Algorithms**, completed by a group of students from the **Faculty of Information Technology - University of Science**. The project includes algorithms related to the **Optimal Binary Search Tree**, such as:
 1. Optimal Binary Search Tree.
 2. Knuth's Optimal Binary Search Tree.
 3. Bisection Heuristic.
 
-**Lưu ý:** tất cả nội dung trong dự án được sử dụng cho mục đích giáo dục và khoa học, không dùng cho bất kì mục đích thương mại nào khác.
-## Hướng dẫn cài dặt
-Trước khi tải source code và bắt đầu thực thi thì hãy chắc chắn rằng bạn đã cài đặt **CMake** và môi trường để biên dịch ngôn ngữ **C++**. Hoặc bạn có thể cài đặt [CMake](https://cmake.org/download/) và [MinGW](https://www.mingw-w64.org/downloads/), hãy chắc chắn cài đặt phiên bản phù hợp với hệ điều hành của bạn.
+**Note:** All content in this project is used for educational and scientific purposes only, not for any commercial use.
 
-Sau đó, bạn hãy tải source code của dự án về. Sau đó mở Command Prompt trong thư mục chứa source code và thực hiện:
+## Installation Guide
+Before downloading the source code and running the project, make sure you have installed **CMake** and a **C++** compilation environment. You can install [CMake](https://cmake.org/download/) and [MinGW](https://www.mingw-w64.org/downloads/)—just ensure you're using the version compatible with your operating system.
+
+Next, download the project’s source code. Then open Command Prompt in the folder containing the source code and run:
 ```cmd
 .\build.bat
 ```
 
-## Đầu ra mẫu (Ví dụ)
+## Sample Output (Example)
 
-Các test mẫu được đặt trong thư mục output.
+Sample test cases are located in the `output` directory. These files include the results from running the algorithms with predefined inputs, demonstrating how each method performs on different datasets.
 
-## Tác giả
-Dự án được thực hiện bởi:
-1. Ngô Huỳnh Thắm - [Github](https://github.com/) - [Email](mailto:).
-2. Trương Lê Trung Hiếu - [Github](https://github.com/Hiulaptop) - [Email](mailto:tlthieu200806@gmail.com).
-3. Trần Minh Tiến - [Github](https://github.com/) - [Email](mailto:).
+---
+
+## Authors
+
+This project was developed by:
+
+1. **Ngo Huynh Tham**  
+  [GitHub](https://github.com/htham-eituc) | [Email](mailto:nhtham2413@clc.fitus.edu.vn)
+
+2. **Truong Le Trung Hieu**  
+  [GitHub](https://github.com/Hiulaptop) | [Email](mailto:tlthieu200806@gmail.com)
+
+3. **Tran Minh Tien**  
+  [GitHub](https://github.com/tien140406) | [Email](mailto:tmtien2418@clc.fitus.edu.vn)
